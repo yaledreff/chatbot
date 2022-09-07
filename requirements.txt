@@ -1,0 +1,15 @@
+asyncio>=3.4.3
+requests==2.23.0
+botbuilder-core==4.14.2
+botframework-connector==4.14.2
+botbuilder-schema==4.14.2
+botbuilder-dialogs==4.14.2
+botbuilder-ai==4.14.2
+botbuilder-applicationinsights==4.14.2
+botbuilder-integration-applicationinsights-aiohttp==4.14.2
+datatypes-date-time>=1.0.0.a1
+azure-cognitiveservices-language-luis>=0.2.0
+msrest>=0.6.10
+itsdangerous==2.0.1
+werkzeug==2.0.3
+emoji==1.7
