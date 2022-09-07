@@ -12,3 +12,4 @@ msrest>=0.6.10
 itsdangerous==2.0.1
 werkzeug==2.0.3
 emoji==1.7
+aiohttp==3.6.2
