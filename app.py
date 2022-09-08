@@ -56,6 +56,12 @@ BOT = EchoBot()
 async def messages(req: Request) -> Response:
     # Main bot message handler.
     # if "application/json" in req.headers["Content-Type"]:
+
+    print("coucou")
+    logging.info("coucou info")
+    logging.warning("coucou warning")
+    logging.error("coucou error")
+    
     body = await req.json()
     # else:
     #    return Response(status=HTTPStatus.UNSUPPORTED_MEDIA_TYPE)
