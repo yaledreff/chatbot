@@ -34,9 +34,6 @@ from bot.echobot import EchoBot
 CONFIG = DefaultConfig()
 SETTINGS = BotFrameworkAdapterSettings(CONFIG.APP_ID, CONFIG.APP_PASSWORD)
 
-logging.info("DEBUGG : Application ID" + CONFIG.APP_ID)
-logging.info("DEBUGG : Application Password" + CONFIG.APP_PASSWORD)
-
 MEMORY = MemoryStorage()
 USER_STATE = UserState(MEMORY)
 CONVERSATION_STATE = ConversationState(MEMORY)
@@ -59,6 +56,9 @@ async def messages(req: Request) -> Response:
 
     logging.warning("header :" + str(req.headers))
     logging.warning("json :" + str(req.text))
+
+    logging.warning("APP ID :" + CONFIG.APP_ID)
+    logging.warning("APP PWD :" + CONFIG.APP_PASSWORD)
     
     body = await req.json()
     # else:
