@@ -1,4 +1,5 @@
 from http import HTTPStatus
+import logging
 
 from aiohttp import web
 from aiohttp.web import Request, Response, json_response
@@ -33,8 +34,8 @@ from bot.echobot import EchoBot
 CONFIG = DefaultConfig()
 SETTINGS = BotFrameworkAdapterSettings(CONFIG.APP_ID, CONFIG.APP_PASSWORD)
 
-print("DEBUGG : Application ID" + CONFIG.APP_ID)
-print("DEBUGG : Application Password" + CONFIG.APP_PASSWORD)
+logging("DEBUGG : Application ID" + CONFIG.APP_ID)
+logging("DEBUGG : Application Password" + CONFIG.APP_PASSWORD)
 
 MEMORY = MemoryStorage()
 USER_STATE = UserState(MEMORY)
