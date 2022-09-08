@@ -33,6 +33,9 @@ from bot.echobot import EchoBot
 CONFIG = DefaultConfig()
 SETTINGS = BotFrameworkAdapterSettings(CONFIG.APP_ID, CONFIG.APP_PASSWORD)
 
+print("DEBUGG : Application ID" + CONFIG.APP_ID)
+print("DEBUGG : Application Password" + CONFIG.APP_PASSWORD)
+
 MEMORY = MemoryStorage()
 USER_STATE = UserState(MEMORY)
 CONVERSATION_STATE = ConversationState(MEMORY)
