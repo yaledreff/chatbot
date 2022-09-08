@@ -57,8 +57,8 @@ async def messages(req: Request) -> Response:
     # Main bot message handler.
     # if "application/json" in req.headers["Content-Type"]:
 
-    logging.warning("header :" + req.headers)
-    logging.warning("header :" + req.json())
+    logging.warning("header :" + str(req.headers))
+    logging.warning("json :" + str(req.text))
     
     body = await req.json()
     # else:
