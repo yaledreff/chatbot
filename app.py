@@ -40,15 +40,15 @@ CONVERSATION_STATE = ConversationState(MEMORY)
 
 ADAPTER = AdapterWithErrorHandler(SETTINGS, CONVERSATION_STATE)
 
-#INSTRUMENTATION_KEY = CONFIG.APPINSIGHTS_INSTRUMENTATION_KEY
-#TELEMETRY_CLIENT = ApplicationInsightsTelemetryClient(
-#    INSTRUMENTATION_KEY, telemetry_processor=AiohttpTelemetryProcessor(), client_queue_size=10
-#)
-# RECOGNIZER = FlightBookingRecognizer(CONFIG)
-# BOOKING_DIALOG = BookingDialog()
-# DIALOG = MainDialog(RECOGNIZER, BOOKING_DIALOG, telemetry_client=TELEMETRY_CLIENT)
-# BOT = DialogAndWelcomeBot(CONVERSATION_STATE, USER_STATE, DIALOG, TELEMETRY_CLIENT)
-BOT = EchoBot()
+INSTRUMENTATION_KEY = CONFIG.APPINSIGHTS_INSTRUMENTATION_KEY
+TELEMETRY_CLIENT = ApplicationInsightsTelemetryClient(
+    INSTRUMENTATION_KEY, telemetry_processor=AiohttpTelemetryProcessor(), client_queue_size=10
+)
+RECOGNIZER = FlightBookingRecognizer(CONFIG)
+BOOKING_DIALOG = BookingDialog()
+DIALOG = MainDialog(RECOGNIZER, BOOKING_DIALOG, telemetry_client=TELEMETRY_CLIENT)
+BOT = DialogAndWelcomeBot(CONVERSATION_STATE, USER_STATE, DIALOG, TELEMETRY_CLIENT)
+# BOT = EchoBot()
 
 async def messages(req: Request) -> Response:
     # Main bot message handler.
