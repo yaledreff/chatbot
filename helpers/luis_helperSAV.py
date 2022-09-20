@@ -10,6 +10,7 @@ class Intent(Enum):
     BOOK_FLIGHT = "booking"
     NONE_INTENT = "NoneIntent"
 
+
 def top_intent(intents: Dict[Intent, dict]) -> TopIntent:
     max_intent = Intent.NONE_INTENT
     max_value = 0.0
@@ -49,34 +50,42 @@ class LuisHelper:
 
                 # We need to get the result from the LUIS JSON which at every level returns an array.
                 to_entities = recognizer_result.entities.get("$instance", {}).get(
-                    "destination", []
+                    "To", []
                 )
                 if len(to_entities) > 0:
-                    result.destination = to_entities[0]["text"].capitalize()
+                    if recognizer_result.entities.get("To", [{"$instance": {}}])[0][
+                        "$instance"
+                    ]:
+                        result.destination = to_entities[0]["text"].capitalize()
+                    else:
+                        result.unsupported_airports.append(
+                            to_entities[0]["text"].capitalize()
+                        )
 
                 from_entities = recognizer_result.entities.get("$instance", {}).get(
-                    "origine", []
+                    "From", []
                 )
                 if len(from_entities) > 0:
-                    result.origine = from_entities[0]["text"].capitalize()
+                    if recognizer_result.entities.get("From", [{"$instance": {}}])[0][
+                        "$instance"
+                    ]:
+                        result.origin = from_entities[0]["text"].capitalize()
+                    else:
+                        result.unsupported_airports.append(
+                            from_entities[0]["text"].capitalize()
+                        )
 
-                aller_entities = recognizer_result.entities.get("$instance", {}).get(
-                    "aller", []
-                )
-                if len(aller_entities) > 0:
-                    result.aller = aller_entities[0]["text"].capitalize()
-               
-                retour_entities = recognizer_result.entities.get("$instance", {}).get(
-                    "retour", []
-                )
-                if len(retour_entities) > 0:
-                        result.retour = retour_entities[0]["text"].capitalize()
+                # This value will be a TIMEX. And we are only interested in a Date so grab the first result and drop
+                # the Time part. TIMEX is a format that represents DateTime expressions that include some ambiguity.
+                # e.g. missing a Year.
+                date_entities = recognizer_result.entities.get("datetime", [])
+                if date_entities:
+                    timex = date_entities[0]["timex"]
 
-                budget_entities = recognizer_result.entities.get("$instance", {}).get(
-                    "budget", []
-                )
-                if len(budget_entities) > 0:
-                    result.budget = budget_entities[0]["text"].capitalize()
+                    if timex:
+                        datetime = timex[0].split("T")[0]
+
+                        result.travel_date = datetime
 
                 else:
                     result.travel_date = None

@@ -1,14 +1,15 @@
 class BookingDetails:
     def __init__(
         self,
+        origine: str = None,
         destination: str = None,
-        origin: str = None,
-        travel_date: str = None,
-        unsupported_airports=None,
+        aller: str = None,
+        retour: str = None,
+        budget: str = None
     ):
-        if unsupported_airports is None:
-            unsupported_airports = []
+
         self.destination = destination
-        self.origin = origin
-        self.travel_date = travel_date
-        self.unsupported_airports = unsupported_airports
+        self.origine = origine
+        self.aller = aller
+        self.retour = retour
+        self.budget = budget
