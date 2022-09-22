@@ -276,5 +276,5 @@ class BookingPromptTest(aiounittest.AsyncTestCase):
 
         step1 = await adapter.test('Hello', 'What is your budget for the flight ?')
         step2 = await step1.send('I could spend 1200')
-        await step2.assert_reply("Force unit test failure for testing")
-        # await step2.assert_reply("What is your budget for the flight ?")
+        # await step2.assert_reply("Force unit test failure for testing")
+        await step2.assert_reply("What is your budget for the flight ?")
