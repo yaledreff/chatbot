@@ -51,6 +51,7 @@ class LuisHelper:
                 to_entities = recognizer_result.entities.get("$instance", {}).get(
                     "destination", []
                 )
+
                 if len(to_entities) > 0:
                     result.destination = to_entities[0]["text"].capitalize()
 

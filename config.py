@@ -2,7 +2,6 @@
 
 import os
 
-
 class DefaultConfig:
     """Configuration for the bot."""
 
