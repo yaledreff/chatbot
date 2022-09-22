@@ -28,9 +28,9 @@ from botbuilder.dialogs.prompts import (
     DateTimeResolution,
 )
 
-from dialogs.date_aller_resolver_dialog import DateAllerResolverDialog
-from dialogs.budget_resolver_dialog import BudgetResolverDialog
-from dialogs.date_retour_resolver_dialog import DateRetourResolverDialog
+from date_aller_resolver_dialog import DateAllerResolverDialog
+from budget_resolver_dialog import BudgetResolverDialog
+from date_retour_resolver_dialog import DateRetourResolverDialog
 
 from botbuilder.community.dialogs.prompts import NumberWithUnitPrompt, NumberWithUnitPromptType
 
