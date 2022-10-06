@@ -45,7 +45,7 @@ class DialogAndWelcomeBot(DialogBot):
     def create_response(self, activity: Activity, attachment: Attachment):
         """Create an attachment message response."""
         response = create_activity_reply(activity)
-        response.attachments = [attachment]
+        #response.attachments = attachment
         return response
 
     # Load attachment from file.

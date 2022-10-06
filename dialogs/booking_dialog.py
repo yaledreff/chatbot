@@ -3,7 +3,8 @@
 from datatypes_date_time.timex import Timex
 
 from botbuilder.dialogs import WaterfallDialog, WaterfallStepContext, DialogTurnResult
-from botbuilder.dialogs.prompts import ConfirmPrompt, TextPrompt, PromptOptions
+from botbuilder.dialogs.prompts import ConfirmPrompt, TextPrompt, ChoicePrompt, PromptOptions
+from botbuilder.dialogs.choices import Choice, ListStyle
 from botbuilder.core import MessageFactory, BotTelemetryClient, NullTelemetryClient
 from .cancel_and_help_dialog import CancelAndHelpDialog
 from .date_aller_resolver_dialog import DateAllerResolverDialog
@@ -142,17 +143,6 @@ class BookingDialog(CancelAndHelpDialog):
             return await step_context.begin_dialog(
                 BudgetResolverDialog.__name__, booking_details.budget
             )  # pylint: disable=line-too-long
-
-    
-        # # Capture the results of the previous step
-        # booking_details.retour = step_context.result
-        # if booking_details.budget is None:
-        #     return await step_context.prompt(
-        #         TextPrompt.__name__,
-        #         PromptOptions(
-        #             prompt=MessageFactory.text("What would be your maximum budget for the flight?")
-        #         ),
-        #     )  # pylint: disable=line-too-long,bad-continuation
 
         return await step_context.next(booking_details.budget)
 
